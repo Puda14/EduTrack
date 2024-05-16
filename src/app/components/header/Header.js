@@ -19,24 +19,22 @@ import { NotificationIcon } from "../icons/NotificationIcon.js";
 
 export default function App() {
   return (
-    <Navbar isBordered>
-      <NavbarContent justify="start">
-        <p>Dashboard</p>
-        <Input
-          classNames={{
-            base: "max-w-full sm:max-w-[10rem] h-10",
-            mainWrapper: "h-full",
-            input: "text-small",
-            inputWrapper:
-              "h-full font-normal text-default-500 bg-default-400/20 dark:bg-default-500/20",
-          }}
-          placeholder="Type to search..."
-          size="sm"
-          startContent={<SearchIcon size={18} />}
-          type="search"
-        />
-      </NavbarContent>
-      <NavbarContent as="div" className="items-center" justify="end">
+    <div className="flex items-center px-10 py-3 bg-white grow">
+      <div className="flex items-center gap-14 grow">
+        <div>
+          <p className="text-2xl font-bold">Dashboard</p>
+          <p className="text-sm">14 March 2024</p>
+        </div>
+        <div className="w-[500px]">
+          <Input
+            placeholder="Type to search..."
+            size="sm"
+            startContent={<SearchIcon size={18} />}
+            type="search"
+          />
+        </div>
+      </div>
+      <div className="flex gap-20">
         <Badge content="99+" shape="circle" color="danger">
           <Button
             radius="full"
@@ -75,7 +73,7 @@ export default function App() {
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
-      </NavbarContent>
-    </Navbar>
+      </div>
+    </div>
   );
 }

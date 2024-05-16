@@ -17,77 +17,73 @@ import {
 
 export default function InProgressTag() {
   return (
-    <Card className="w-2/3">
-      <CardBody className="flex grid grid-cols-6">
-        <div>
-          <Dropdown>
-            <DropdownTrigger>
-              <Button>In progress</Button>
-            </DropdownTrigger>
-            <DropdownMenu>
-              <DropdownItem>
-                <Progress
-                  size="sm"
-                  radius="sm"
-                  classNames={{
-                    base: "max-w-md",
-                    track: "drop-shadow-md border border-default",
-                    indicator: "bg-gradient-to-r from-blue-500 to-blue-400",
-                    label: "tracking-wider font-medium text-default-600",
-                    value: "text-foreground/60",
-                  }}
-                  label="KPI 1"
-                  value={65}
-                  showValueLabel={true}
+    <Card className="grow">
+      <CardBody className="flex">
+        <Dropdown>
+          <DropdownTrigger>
+            <Button>In progress</Button>
+          </DropdownTrigger>
+          <DropdownMenu>
+            <DropdownItem>
+              <Progress
+                size="sm"
+                radius="sm"
+                classNames={{
+                  base: "max-w-md",
+                  track: "drop-shadow-md border border-default",
+                  indicator: "bg-gradient-to-r from-blue-500 to-blue-400",
+                  label: "tracking-wider font-medium text-default-600",
+                  value: "text-foreground/60",
+                }}
+                label="KPI 1"
+                value={65}
+                showValueLabel={true}
+              />
+            </DropdownItem>
+            <DropdownItem>
+              <Progress
+                size="sm"
+                radius="sm"
+                classNames={{
+                  base: "max-w-md",
+                  track: "drop-shadow-md border border-default",
+                  indicator: "bg-gradient-to-r from-blue-500 to-blue-400",
+                  label: "tracking-wider font-medium text-default-600",
+                  value: "text-foreground/60",
+                }}
+                label="KPI 2"
+                value={65}
+                showValueLabel={true}
+              />
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        <div className="flex flex-col">
+          <div className="text-xl font-bold">Goal 1</div>
+          <div className="flex items-center justify-center">
+            <div className="flex items-center justify-center flex-1 gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                 />
-              </DropdownItem>
-              <DropdownItem>
-                <Progress
-                  size="sm"
-                  radius="sm"
-                  classNames={{
-                    base: "max-w-md",
-                    track: "drop-shadow-md border border-default",
-                    indicator: "bg-gradient-to-r from-blue-500 to-blue-400",
-                    label: "tracking-wider font-medium text-default-600",
-                    value: "text-foreground/60",
-                  }}
-                  label="KPI 2"
-                  value={65}
-                  showValueLabel={true}
-                />
-              </DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-        </div>
-        <div className="flex flex-col col-span-5">
-          <div>Goal</div>
-          <div className="grid grid-cols-5">
-            <div className="flex">
-              <div>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
-              </div>
-              <div className="flex flex-col">
-                <div>from</div>
-                <div>to</div>
+              </svg>
+              <div className="flex flex-col flex-1">
+                <div>from 10 March 2024</div>
+                <div>to 10 March 2025</div>
               </div>
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex">
+            <div className="flex flex-1 gap-2">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +104,7 @@ export default function InProgressTag() {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex">
+            <div className="flex flex-1 gap-2">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +125,7 @@ export default function InProgressTag() {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex">
+            <div className="flex flex-1 gap-2">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +145,7 @@ export default function InProgressTag() {
               optional task
               <Divider orientation="vertical" />
             </div>
-            <div className="flex">
+            <div className="flex gap-2">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

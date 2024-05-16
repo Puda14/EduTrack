@@ -7,6 +7,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@nextui-org/theme/dist/components/(button|snippet|code|input).js",
+    "./node_modules/flowbite/**/*.js",
   ],
   theme: {
     extend: {
@@ -17,5 +18,5 @@ module.exports = {
       },
     },
   },
-  plugins: [nextui()],
+  plugins: [nextui(), require("flowbite/plugin")({ charts: true })],
 };

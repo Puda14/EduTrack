@@ -1,6 +1,8 @@
 import React from "react";
 import { Tabs, Tab, Card, CardBody } from "@nextui-org/react";
 import InProgressTag from "./InProgress";
+import ProgressDetail from "./ProgressDetail";
+import CompletedDetail from "./CompletedDetail";
 
 export default function KPITabs() {
   return (
@@ -8,18 +10,15 @@ export default function KPITabs() {
       <Tabs aria-label="Options" color="primary">
         <Tab key="photos" title="In progress ">
           <Card>
-            <CardBody></CardBody>
+            <CardBody>
+              <ProgressDetail />
+            </CardBody>
           </Card>
         </Tab>
         <Tab key="music" title="Completed">
           <Card>
-            <CardBody className="flex flex-col gap-5">
-              <InProgressTag />
-              <InProgressTag />
-              <InProgressTag />
-              <InProgressTag />
-              <InProgressTag />
-              <InProgressTag />
+            <CardBody>
+              <CompletedDetail />
             </CardBody>
           </Card>
         </Tab>

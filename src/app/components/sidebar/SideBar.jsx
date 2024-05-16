@@ -5,9 +5,9 @@ import Link from "next/link";
 export default function SideBar() {
   return (
     <>
-      <div class="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-        <div class="mb-2 p-4">
-          <div>
+      <div class="relative h-full fixed flex flex-col bg-clip-border  bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+        <div class="mb-2  flex flex-col p-5">
+          <div className="pl-3">
             <img src="https://d1j8r0kxyu9tj8.cloudfront.net/files/yrCAGEApKRMQ5SIPy6zpeOcMLfhfXvHYfcrAYnOb.png" />
           </div>
           <h5 class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
@@ -15,23 +15,25 @@ export default function SideBar() {
           </h5>
         </div>
         <nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
-          <div
-            role="button"
-            tabindex="0"
-            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-          >
-            <div class="grid place-items-center mr-4">
-              <svg
-                class="w-6 h-6 fill-current inline-block"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
-              </svg>
+          <Link href="/">
+            <div
+              role="button"
+              tabindex="0"
+              class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-gray-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div class="grid place-items-center mr-4">
+                <svg
+                  class="w-6 h-6 fill-current inline-block"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                </svg>
+              </div>
+              Dashboard
             </div>
-            Dashboard
-          </div>
+          </Link>
           <div
             role="button"
             tabindex="0"
@@ -78,14 +80,6 @@ export default function SideBar() {
                 </svg>
               </div>
               KPI{" "}
-              <div class="grid place-items-center ml-auto justify-self-end">
-                <div
-                  class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full"
-                  style={{ opacity: "1" }}
-                >
-                  <span class="">14</span>
-                </div>
-              </div>
             </div>
           </Link>
           <div
@@ -156,6 +150,14 @@ export default function SideBar() {
               </svg>
             </div>
             inbox
+            <div class="grid place-items-center ml-auto justify-self-end">
+              <div
+                class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full"
+                style={{ opacity: "1" }}
+              >
+                <span class="">14</span>
+              </div>
+            </div>
           </div>
           <div
             role="button"
@@ -180,33 +182,38 @@ export default function SideBar() {
             Settings
           </div>
         </nav>
-        <div className="flex items-center justify-center pt-32 ">
-          <Card className="flex items-center justify-center w-2/3 h-32 bg-blue-500 hover:bg-purple-400 hover:bg-opacity-80">
-            <div
-              role="button"
-              tabindex="0"
-              class="flex flex-col items-center p-3 rounded-lg text-start leading-tight transition-all  focus:bg-purple-400-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+        <Link href="/addnewgoal">
+          <div className="pt-32 pl-5">
+            <Card
+              className="flex items-center justify-center w-2/3 h-32 hover:bg-blue-500 hover:bg-opacity-80"
+              style={{ backgroundColor: "#8380fe" }}
             >
-              <div class="grid place-items-center mr-4 pb-5">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  class="w-6 h-6 "
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                  />
-                </svg>
+              <div
+                role="button"
+                tabindex="0"
+                class="flex flex-col items-center justify-centerp-3 rounded-lg text-start leading-tight transition-all  focus:bg-purple-400-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+              >
+                <div class="grid place-items-center pb-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="w-6 h-6 "
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                    />
+                  </svg>
+                </div>
+                ADD NEW WORK
               </div>
-              ADD NEW WORK
-            </div>
-          </Card>
-        </div>
+            </Card>
+          </div>
+        </Link>
       </div>
     </>
   );

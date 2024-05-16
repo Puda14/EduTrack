@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button } from "@nextui-org/react";
+import Link from "next/link";
 
 export default function SideBar() {
   return (
@@ -54,37 +55,39 @@ export default function SideBar() {
             </div>
             Tracking
           </div>
-          <div
-            role="button"
-            tabindex="0"
-            class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
-          >
-            <div class="grid place-items-center mr-4">
-              <svg
-                class="w-5 h-5"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                />
-              </svg>
-            </div>
-            KPI{" "}
-            <div class="grid place-items-center ml-auto justify-self-end">
-              <div
-                class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full"
-                style={{ opacity: "1" }}
-              >
-                <span class="">14</span>
+          <Link href="/kpi">
+            <div
+              role="button"
+              tabindex="0"
+              class="flex items-center w-full p-3 rounded-lg text-start leading-tight transition-all hover:bg-blue-50 hover:bg-opacity-80 focus:bg-blue-50 focus:bg-opacity-80 active:bg-blue-50 active:bg-opacity-80 hover:text-blue-900 focus:text-blue-900 active:text-blue-900 outline-none"
+            >
+              <div class="grid place-items-center mr-4">
+                <svg
+                  class="w-5 h-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+              </div>
+              KPI{" "}
+              <div class="grid place-items-center ml-auto justify-self-end">
+                <div
+                  class="relative grid items-center font-sans font-bold uppercase whitespace-nowrap select-none bg-blue-500/20 text-blue-900 py-1 px-2 text-xs rounded-full"
+                  style={{ opacity: "1" }}
+                >
+                  <span class="">14</span>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
           <div
             role="button"
             tabindex="0"

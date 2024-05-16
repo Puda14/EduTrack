@@ -7,30 +7,29 @@ import SpeedChart from "@/app/components/charts/SpeedChart";
 import Speed from "@/app/components/charts/cards/Speed";
 import KPITabs from "@/app/components/kpi/KPITabs";
 import InProgressTag from "@/app/components/kpi/InProgress";
-import "flowbite";
-import { Avatar } from "@nextui-org/react";
+import TaskCompleted from "@/app/components/charts/cards/TaskCompleted";
+import NewTask from "@/app/components/charts/cards/NewTask";
+import GoalDone from "@/app/components/charts/cards/GoalDone";
 
 export default function Home() {
   return (
     <main className="px-20 pt-10">
-      <div className="flex gap-10">
-        <div className="flex items-center gap-5 p-10 bg-white rounded-xl">
+      <div className="flex flex-col">
+        <div className="grid grid-cols-3">
           <div>
-            <Avatar
-              src="https://i.pravatar.cc/150?u=a04258114e29026708c"
-              className="w-32 h-32 tet-3xl"
-            />
+            <TaskCompleted />
           </div>
           <div>
-            <div className="text-xl font-bold">Natalie Wheeler</div>
-            <div className="text-lg font-bold">Lecturer</div>
-            <div>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </div>
+            {" "}
+            <NewTask />
+          </div>
+          <div>
+            <GoalDone />
           </div>
         </div>
-        <SpeedChart />
+
+        <TaskDone />
+        <Task />
       </div>
     </main>
   );

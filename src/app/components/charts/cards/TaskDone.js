@@ -4,7 +4,7 @@ import TaskDoneChart from "../TaskDoneChart";
 
 export default function TaskDone() {
   return (
-    <Card className="py-4">
+    <Card className="py-4 mb-5">
       <CardHeader className="flex grid grid-cols-3 px-4 pt-2 pb-0 items-startms-start">
         <div className="col-span-2 text-2xl font-semibold">
           <h2> Task Done</h2>

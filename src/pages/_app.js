@@ -10,9 +10,15 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <NextUIProvider navigate={router.push} className="flex">
-      <SideBar />
-      <div className="grow">
-        <Header />
+      <div className="">
+        <SideBar />
+      </div>
+
+      <div className="grow" style={{ backgroundColor: "#f3f4f8" }}>
+        <div style={{ backgroundColor: "#f3f4f8" }}>
+          <Header />
+        </div>
+
         <Component {...pageProps} />
       </div>
     </NextUIProvider>
@@ -20,3 +26,4 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
+// con

@@ -6,15 +6,7 @@ function TaskDoneChart() {
     var myChart = new Chart(ctx, {
       type: "line",
       data: {
-        labels: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
+        labels: ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"],
         datasets: [
           {
             data: [86, 114, 106, 106, 107, 111, 133],
@@ -36,7 +28,7 @@ function TaskDoneChart() {
   return (
     <>
       {/* Filled line chart */}
-      <div className="w-[700px] h-500 flex mx-auto my-auto">
+      <div className="md:w-[700px] w-full md:h-500 h-auto flex mx-auto my-auto">
         <div className="w-full pt-0 my-auto border border-gray-400 shadow-xl rounded-xl h-fit">
           <canvas id="myChart"></canvas>
         </div>

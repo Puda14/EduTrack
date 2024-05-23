@@ -45,7 +45,7 @@ function KPIChart() {
     <>
       {/* Stacked chart */}
 
-      <div className="w-[300px] h-700  mx-auto my-auto">
+      <div className="md:w-[300px] md:h-700  mx-auto my-auto">
         <div className="w-full pt-0 border border-gray-400 shadow-xl rounded-xl">
           <canvas id="myChart"></canvas>
         </div>

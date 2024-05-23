@@ -45,7 +45,7 @@ function SpeedChart() {
     <>
       {/* Doughnut chart */}
 
-      <div className="w-[300px] flex mx-auto my-auto">
+      <div className="md:w-[300px] flex mx-auto my-auto">
         <div className="w-full pt-0 pb-2 my-auto border border-gray-400 shadow-xl rounded-xl h-fit">
           <canvas id="myChart"></canvas>
         </div>

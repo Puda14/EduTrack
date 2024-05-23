@@ -10,26 +10,20 @@ import InProgressTag from "@/app/components/kpi/InProgress";
 import TaskCompleted from "@/app/components/charts/cards/TaskCompleted";
 import NewTask from "@/app/components/charts/cards/NewTask";
 import GoalDone from "@/app/components/charts/cards/GoalDone";
+import TaskRate from "@/app/components/taskrate/TaskRate";
+import TaskRateMobile from "@/app/components/charts/cards/TaskRate";
 
 export default function Home() {
   return (
-    <main className="px-20 pt-10">
-      <div className="flex flex-col">
-        <div className="grid grid-cols-3">
-          <div>
-            <TaskCompleted />
-          </div>
-          <div>
-            {" "}
-            <NewTask />
-          </div>
-          <div>
-            <GoalDone />
-          </div>
-        </div>
-
+    <main className="px-4 pt-10 md:px-20">
+      <div className="flex flex-col justify-center">
+        <TaskRate />
+        <TaskRateMobile />
         <TaskDone />
-        <Task />
+        <div className="hidden sm:block">
+          {" "}
+          <Task />
+        </div>
       </div>
     </main>
   );

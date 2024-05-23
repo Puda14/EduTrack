@@ -18,11 +18,27 @@ import {
 import { Button, Card } from "@nextui-org/react";
 import { useState } from "react";
 
+const XLSX = require("xlsx");
+
 const AddNewGoalPage = () => {
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(
+    typeof window !== "undefined" ? localStorage.getItem("goalList") : []
+  );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
-
+  console.log(list);
+  const checkFile = async (e) => {
+    const file = e.target.files[0];
+    const data = await file.arrayBuffer();
+    const goalWorkbook = XLSX.read(data);
+    const goalSheet = goalWorkbook.Sheets[goalWorkbook.SheetNames[0]];
+    console.log(goalSheet);
+    const goalJSON = XLSX.utils.sheet_to_json(goalSheet);
+    console.log(goalJSON);
+    localStorage.setItem("goalList", JSON.stringify(goalJSON));
+    /* const goalJSON = XLSX.utils.sheet_to_json(goalData, { header: 1 });
+    console.log(goalJSON); */
+  };
   const handleAddToList = (item) => {
     setList;
   };
@@ -30,18 +46,43 @@ const AddNewGoalPage = () => {
     setInput(e.target.value);
     console.log(input);
   };
+  const handleAddGoal = () => {};
   // list contains goals
   // list = [ {task = [{name, type, fromDate, toDate, description} ], title, fromDate, toDate, role, hashtag, description} ]
   //
   return (
     <div className="flex-container flex justify-between">
-      <div classname="goal-menu flex flex-row " style={{ width: 540 }}>
+      <div
+        className="goal-menu flex flex-col justify-center"
+        style={{ width: 540 }}
+      >
         <form
           onSubmit={handleAddToList}
           classname="goal-menu flex flex-row w-full"
         >
           <h2 style={{ fontSize: 34 }}>New Goal</h2>
+          <div>
+            <span>Import File Excel</span>
+            {/* <Button color="primary" style={{ margin: "0 32px" }}> */}
+            {/* Import */}
+            {/* </Button> */}
+            <input
+              type="file"
+              accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+              id="excel-input"
+              onChange={checkFile}
+            />
+            <Button
+              onClick={() =>
+                console.log(document.getElementById("excel-input").files[0])
+              }
+              color="primary"
+            >
+              Export
+            </Button>
+          </div>
           <div>Title</div>
+
           {/* <Input
             style={{ border: "none" }}
             placeholder="Please enter here"
@@ -63,13 +104,19 @@ const AddNewGoalPage = () => {
             value={input}
           /> */}
           <InputField name="Role" style={{ border: "none" }} />
+          <div>Hashtag</div>
+          <InputField style={{ border: "none" }} />
           <div>Description</div>
           <InputField
             style={{ border: "none" }}
             placeholder="Please enter description (/250)"
           />
         </form>{" "}
-        <Button style={{ margin: "32px 0" }} color="primary">
+        <Button
+          onClick={handleAddGoal}
+          style={{ margin: "32px 0" }}
+          color="primary"
+        >
           Add Goal
         </Button>
       </div>
@@ -135,13 +182,6 @@ const AddNewGoalPage = () => {
                     style={{ gap: 120 }}
                   >
                     <div className="w-1/2">
-                      <div>
-                        <span>Import File Excel</span>
-                        <Button color="primary" style={{ margin: "0 32px" }}>
-                          Import
-                        </Button>
-                        <Button color="primary">Export</Button>
-                      </div>
                       <div>Task name</div>
                       <InputField style={{ border: "none" }} />
                       <div>Type</div>

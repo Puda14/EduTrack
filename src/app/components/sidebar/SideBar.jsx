@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function SideBar() {
   return (
     <>
-      <div class="relative h-full fixed flex flex-col bg-clip-border  bg-white text-gray-700 h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+      <div class="hidden relative h-full sm:flex flex-col bg-clip-border  bg-white text-gray-700 h-[calc(100vh-2rem)] w-full md:max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
         <div class="mb-2  flex flex-col p-5">
           <div className="pl-3">
             <img src="https://d1j8r0kxyu9tj8.cloudfront.net/files/yrCAGEApKRMQ5SIPy6zpeOcMLfhfXvHYfcrAYnOb.png" />
@@ -14,7 +14,7 @@ export default function SideBar() {
             EduTrack
           </h5>
         </div>
-        <nav class="flex flex-col gap-1 min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
+        <nav class="flex flex-col gap-1 md:min-w-[240px] p-2 font-sans text-base font-normal text-gray-700">
           <Link href="/">
             <div
               role="button"

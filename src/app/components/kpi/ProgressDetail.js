@@ -3,11 +3,8 @@ import { Accordion, AccordionItem, Progress } from "@nextui-org/react";
 import InProgressTag from "./InProgress";
 
 export default function ProgressDetail() {
-  const defaultContent =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
-
   return (
-    <Accordion variant="splitted">
+    <Accordion variant="splitted" className="flex" fullWidth="false">
       <AccordionItem
         key="1"
         startContent={<InProgressTag goal={"Lecturer"} />}

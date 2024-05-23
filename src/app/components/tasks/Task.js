@@ -9,9 +9,9 @@ import { color } from "framer-motion";
 
 export default function Task() {
   return (
-    <Card className="w-full">
+    <Card className="flex">
       <CardBody>
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-3 sm:grid-cols-4">
           <div className="flex">
             {" "}
             <Button className="w-12 h-12 rounded-full bg-none">
@@ -37,7 +37,7 @@ export default function Task() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col ">
+          <div className="flex-col hidden sm:flex">
             <div>Search Inspiration for project</div>
             <div>
               <Link

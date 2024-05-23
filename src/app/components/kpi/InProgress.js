@@ -1,27 +1,11 @@
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  Image,
-  Button,
-  Progress,
-  Divider,
-} from "@nextui-org/react";
-import {
-  Dropdown,
-  DropdownTrigger,
-  DropdownMenu,
-  DropdownSection,
-  DropdownItem,
-} from "@nextui-org/dropdown";
-
+import { Card, CardBody, Button, Divider } from "@nextui-org/react";
 export default function InProgressTag({ goal }) {
   return (
-    <Card className="mb-3 grow" shadow="none">
-      <CardBody className="grid grid-cols-6">
-        <div className="flex items-center justify-center">
+    <Card className="mb-3" shadow="none">
+      <CardBody className="flex md:grid md:grid-cols-6">
+        <div className="flex ">
           {" "}
-          <Button>
+          <Button style={{ backgroundColor: "#8380fe" }}>
             <div>
               <div>
                 <svg
@@ -38,12 +22,12 @@ export default function InProgressTag({ goal }) {
                 </svg>
               </div>
             </div>
-            In progress
+            <div className="hidden md:block"> In progress</div>
           </Button>
         </div>
-        <div className="flex flex-col col-span-5">
+        <div className="flex flex-col md:col-span-5">
           <div className="text-xl font-bold">{goal}</div>
-          <div className="grid grid-cols-5 text-slate-400">
+          <div className="grid grid-cols-1 md:grid-cols-5 text-slate-400">
             <div className="flex items-center justify-center flex-1 gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +50,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex items-center justify-center gap-2">
+            <div className="items-center justify-center hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -87,7 +71,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex items-center justify-center flex-1 gap-2 ">
+            <div className="items-center justify-center hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -108,7 +92,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="flex items-center justify-center flex-1 gap-2">
+            <div className="items-center justify-center flex-1 hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +113,7 @@ export default function InProgressTag({ goal }) {
 
               <Divider orientation="vertical" />
             </div>
-            <div className="flex items-center justify-center gap-2">
+            <div className="flex items-center justify-center hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -7,7 +7,7 @@ import CompletedDetail from "./CompletedDetail";
 export default function KPITabs() {
   return (
     <div className="flex flex-col w-full">
-      <Tabs aria-label="Options" color="primary">
+      <Tabs aria-label="Options" color="default">
         <Tab key="photos" title="In progress ">
           <Card>
             <CardBody>

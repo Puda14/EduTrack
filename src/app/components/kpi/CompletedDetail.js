@@ -11,7 +11,7 @@ export default function CompletedDetail() {
     <Accordion variant="splitted">
       <AccordionItem
         key="1"
-        startContent={<CompletedTag />}
+        startContent={<CompletedTag goal={"Lecturer"} />}
         hideIndicator="false"
       >
         <Progress
@@ -31,7 +31,7 @@ export default function CompletedDetail() {
       </AccordionItem>
       <AccordionItem
         key="2"
-        startContent={<CompletedTag />}
+        startContent={<CompletedTag goal={"Researchers"} />}
         hideIndicator="false"
       >
         <Progress
@@ -65,7 +65,7 @@ export default function CompletedDetail() {
       </AccordionItem>
       <AccordionItem
         key="3"
-        startContent={<CompletedTag />}
+        startContent={<CompletedTag goal={"officer"} />}
         hideIndicator="false"
       >
         <Progress

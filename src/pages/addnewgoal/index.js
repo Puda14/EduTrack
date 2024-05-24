@@ -19,7 +19,6 @@ import {
 import { Button, Card } from "@nextui-org/react";
 import { useState } from "react";
 import { InformationTooltip } from "@/app/components/hover/InformationTooltip";
-import { Inconsolata } from "next/font/google";
 
 const XLSX = require("xlsx");
 
@@ -29,18 +28,18 @@ const AddNewGoalPage = () => {
   );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
+  const [KPI, setKPI] = useState([]);
 
   const checkFile = async (e) => {
     const file = e.target.files[0];
     const data = await file.arrayBuffer();
     const goalWorkbook = XLSX.read(data);
     const goalSheet = goalWorkbook.Sheets[goalWorkbook.SheetNames[0]];
-    console.log(goalSheet);
     const goalJSON = XLSX.utils.sheet_to_json(goalSheet);
-    console.log(goalJSON);
+    const KPIList = [];
+    goalJSON.forEach((i) => KPIList.push(i.KPI));
+    setKPI(KPIList);
     localStorage.setItem("goalList", JSON.stringify(goalJSON));
-    /* const goalJSON = XLSX.utils.sheet_to_json(goalData, { header: 1 });
-    console.log(goalJSON); */
   };
   const handleAddToList = (item) => {
     setList;
@@ -135,30 +134,38 @@ const AddNewGoalPage = () => {
         <h2 style={{ fontSize: 34 }}>
           KPI <InformationTooltip content={"KPI"} />
         </h2>
-        <Card
-          style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
-          className="flex-row"
-        >
-          <div className="flex items-center justify-center h-full">
-            <ClipboardIcon />
-          </div>
-          <CardBody className="bg-white">
-            <div>Task 1</div>
-            <div>Example task</div>
-          </CardBody>
-        </Card>
-        <Card
-          style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
-          className="flex-row"
-        >
-          <div className="flex items-center justify-center h-full">
-            <ClipboardIcon />
-          </div>
-          <CardBody className="bg-white">
-            <div>Task 2</div>
-            <div>Example task</div>
-          </CardBody>
-        </Card>
+        {
+          KPI.map((i) => {
+            if (i)
+              return (
+                <Card
+                  style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
+                  className="flex-row"
+                  key={i}
+                >
+                  <div className="flex items-center justify-center h-full">
+                    <ClipboardIcon />
+                  </div>
+                  <CardBody className="bg-white">
+                    <div>{i}</div>
+                    <div>Example task</div>
+                  </CardBody>
+                </Card>
+              );
+          })
+          /* <Card
+            style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
+            className="flex-row"
+          >
+            <div className="flex items-center justify-center h-full">
+              <ClipboardIcon />
+            </div>
+            <CardBody className="bg-white">
+              <div>Task 1</div>
+              <div>Example task</div>
+            </CardBody>
+          </Card> */
+        }
         <Button
           onClick={() => {
             setKpiPopup(true);

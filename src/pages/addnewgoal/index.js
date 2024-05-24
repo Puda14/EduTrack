@@ -12,6 +12,7 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
+  Pagination,
   Select,
   SelectItem,
   Tooltip,
@@ -78,15 +79,12 @@ const AddNewGoalPage = () => {
               accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
               id="excel-input"
               onChange={checkFile}
+              style={{ borderRadius: 12, display: "none" }}
             />
-            <Button
-              onClick={() =>
-                console.log(document.getElementById("excel-input").files[0])
-              }
-              color="primary"
-            >
-              Export
+            <Button color="primary" style={{ margin: "0px 15px" }}>
+              <label for="excel-input">Import</label>
             </Button>
+            <Button color="primary">Export</Button>
           </div>
           <div>Title</div>
 
@@ -251,6 +249,14 @@ const AddNewGoalPage = () => {
                       <h2 style={{ fontSize: 34 }}>
                         Optional Tasks
                         <InformationTooltip content="optional" />
+                        <Select
+                          label="Select number of tasks"
+                          defaultSelectedKeys={"0"}
+                        >
+                          <SelectItem key="0">0</SelectItem>
+                          <SelectItem>1</SelectItem>
+                          <SelectItem>2</SelectItem>
+                        </Select>
                       </h2>
                       <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}

@@ -20,6 +20,7 @@ import {
 import { Button, Card } from "@nextui-org/react";
 import { useState } from "react";
 import { InformationTooltip } from "@/app/components/hover/InformationTooltip";
+import "./responsive.css";
 
 const XLSX = require("xlsx");
 
@@ -175,12 +176,12 @@ const AddNewGoalPage = () => {
           <ModalContent>
             {() => (
               <>
-                <ModalBody>
+                <ModalBody className="modal-body">
                   <h1 style={{ fontSize: 34 }}>
                     New KPI <InformationTooltip content="New KPI" />
                   </h1>
                   <div
-                    className="flex w-full justify-between px-8"
+                    className="kpi-info-menu flex w-full justify-between px-8"
                     style={{ gap: 120 }}
                   >
                     <div className="w-1/2">
@@ -198,10 +199,10 @@ const AddNewGoalPage = () => {
                     <InformationTooltip content="Tasks" />
                   </h1>
                   <div
-                    className="flex w-full justify-between px-8"
+                    className="task-menu flex w-full justify-between px-8"
                     style={{ gap: 120 }}
                   >
-                    <div className="w-1/2">
+                    <div className="child-menu w-1/2">
                       <div>Task name</div>
                       <InputField style={{ border: "none" }} />
                       <div>Type</div>
@@ -216,7 +217,7 @@ const AddNewGoalPage = () => {
                         ADD NEW TASK
                       </Button>
                     </div>
-                    <div className="w-1/2">
+                    <div className="child-menu w-1/2">
                       <h2 style={{ fontSize: 34 }}>
                         Required Tasks{" "}
                         <InformationTooltip content="requiring" />

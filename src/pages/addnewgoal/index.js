@@ -65,7 +65,7 @@ const AddNewGoalPage = () => {
           onSubmit={handleAddToList}
           classname="goal-menu flex flex-row w-full"
         >
-          <h2 style={{ fontSize: 34 }}>
+          <h2 style={{ fontSize: 34, display: "flex", alignItems: "center" }}>
             New Goal
             <InformationTooltip content={"Adding goal"} />{" "}
           </h2>
@@ -130,7 +130,7 @@ const AddNewGoalPage = () => {
         className="kpi-menu flex flex-col item-center"
         style={{ width: 320 }}
       >
-        <h2 style={{ fontSize: 34 }}>
+        <h2 style={{ fontSize: 34, display: "flex", alignItems: "center" }}>
           KPI <InformationTooltip content={"KPI"} />
         </h2>
         {
@@ -177,7 +177,13 @@ const AddNewGoalPage = () => {
             {() => (
               <>
                 <ModalBody className="modal-body">
-                  <h1 style={{ fontSize: 34 }}>
+                  <h1
+                    style={{
+                      fontSize: 34,
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     New KPI <InformationTooltip content="New KPI" />
                   </h1>
                   <div
@@ -194,7 +200,13 @@ const AddNewGoalPage = () => {
                     </div>
                   </div>
                   <hr />
-                  <h1 style={{ fontSize: 34 }}>
+                  <h1
+                    style={{
+                      fontSize: 34,
+                      display: "flex",
+                      alignItems: "center",
+                    }}
+                  >
                     Tasks
                     <InformationTooltip content="Tasks" />
                   </h1>
@@ -218,7 +230,13 @@ const AddNewGoalPage = () => {
                       </Button>
                     </div>
                     <div className="child-menu w-1/2">
-                      <h2 style={{ fontSize: 34 }}>
+                      <h2
+                        style={{
+                          fontSize: 34,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
                         Required Tasks{" "}
                         <InformationTooltip content="requiring" />
                       </h2>
@@ -247,18 +265,25 @@ const AddNewGoalPage = () => {
                         </CardBody>
                       </Card>
                       <hr />
-                      <h2 style={{ fontSize: 34 }}>
+                      <h2
+                        style={{
+                          fontSize: 34,
+                          display: "flex",
+                          alignItems: "center",
+                        }}
+                      >
                         Optional Tasks
                         <InformationTooltip content="optional" />
-                        <Select
-                          label="Select number of tasks"
-                          defaultSelectedKeys={"0"}
-                        >
-                          <SelectItem key="0">0</SelectItem>
-                          <SelectItem>1</SelectItem>
-                          <SelectItem>2</SelectItem>
-                        </Select>
                       </h2>
+                      <Select
+                        label="Select number of tasks"
+                        defaultSelectedKeys={"0"}
+                      >
+                        <SelectItem key="0">0</SelectItem>
+                        <SelectItem>1</SelectItem>
+                        <SelectItem>2</SelectItem>
+                      </Select>
+
                       <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
                         className="flex-row"

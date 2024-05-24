@@ -14,9 +14,12 @@ import {
   ModalFooter,
   Select,
   SelectItem,
+  Tooltip,
 } from "@nextui-org/react";
 import { Button, Card } from "@nextui-org/react";
 import { useState } from "react";
+import { InformationTooltip } from "@/app/components/hover/InformationTooltip";
+import { Inconsolata } from "next/font/google";
 
 const XLSX = require("xlsx");
 
@@ -26,7 +29,7 @@ const AddNewGoalPage = () => {
   );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
-  console.log(list);
+
   const checkFile = async (e) => {
     const file = e.target.files[0];
     const data = await file.arrayBuffer();
@@ -50,6 +53,7 @@ const AddNewGoalPage = () => {
   // list contains goals
   // list = [ {task = [{name, type, fromDate, toDate, description} ], title, fromDate, toDate, role, hashtag, description} ]
   //
+  const mapKPI = () => {};
   return (
     <div className="flex-container flex justify-between">
       <div
@@ -60,7 +64,11 @@ const AddNewGoalPage = () => {
           onSubmit={handleAddToList}
           classname="goal-menu flex flex-row w-full"
         >
-          <h2 style={{ fontSize: 34 }}>New Goal</h2>
+          <h2 style={{ fontSize: 34 }}>
+            New Goal
+            <InformationTooltip content={"Adding goal"} />{" "}
+          </h2>
+
           <div>
             <span>Import File Excel</span>
             {/* <Button color="primary" style={{ margin: "0 32px" }}> */}
@@ -124,7 +132,9 @@ const AddNewGoalPage = () => {
         className="kpi-menu flex flex-col item-center"
         style={{ width: 320 }}
       >
-        <h2 style={{ fontSize: 34 }}>KPI</h2>
+        <h2 style={{ fontSize: 34 }}>
+          KPI <InformationTooltip content={"KPI"} />
+        </h2>
         <Card
           style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
           className="flex-row"
@@ -161,7 +171,9 @@ const AddNewGoalPage = () => {
             {() => (
               <>
                 <ModalBody>
-                  <h1 style={{ fontSize: 34 }}>New KPI</h1>
+                  <h1 style={{ fontSize: 34 }}>
+                    New KPI <InformationTooltip content="New KPI" />
+                  </h1>
                   <div
                     className="flex w-full justify-between px-8"
                     style={{ gap: 120 }}
@@ -176,7 +188,10 @@ const AddNewGoalPage = () => {
                     </div>
                   </div>
                   <hr />
-                  <h1 style={{ fontSize: 34 }}>Tasks</h1>
+                  <h1 style={{ fontSize: 34 }}>
+                    Tasks
+                    <InformationTooltip content="Tasks" />
+                  </h1>
                   <div
                     className="flex w-full justify-between px-8"
                     style={{ gap: 120 }}
@@ -197,7 +212,10 @@ const AddNewGoalPage = () => {
                       </Button>
                     </div>
                     <div className="w-1/2">
-                      <h2 style={{ fontSize: 34 }}>Required Tasks</h2>
+                      <h2 style={{ fontSize: 34 }}>
+                        Required Tasks{" "}
+                        <InformationTooltip content="requiring" />
+                      </h2>
                       <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
                         className="flex-row"
@@ -223,7 +241,10 @@ const AddNewGoalPage = () => {
                         </CardBody>
                       </Card>
                       <hr />
-                      <h2 style={{ fontSize: 34 }}>Optional Tasks</h2>
+                      <h2 style={{ fontSize: 34 }}>
+                        Optional Tasks
+                        <InformationTooltip content="optional" />
+                      </h2>
                       <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
                         className="flex-row"

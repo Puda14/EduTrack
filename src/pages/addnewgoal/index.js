@@ -96,14 +96,14 @@ const AddNewGoalPage = () => {
   //
   const mapKPI = () => {};
   return (
-    <div className="flex-container flex justify-between">
+    <div className="flex justify-between flex-container">
       <div
-        className="goal-menu flex flex-col justify-center"
+        className="flex flex-col justify-center goal-menu"
         style={{ width: 540 }}
       >
         <form
           onSubmit={handleAddToList}
-          classname="goal-menu flex flex-row w-full"
+          classname="flex flex-row w-full goal-menu"
         >
           <h2 style={{ fontSize: 34, display: "flex", alignItems: "center" }}>
             New Goal
@@ -167,7 +167,7 @@ const AddNewGoalPage = () => {
         </Button>
       </div>
       <div
-        className="kpi-menu flex flex-col item-center"
+        className="flex flex-col kpi-menu item-center"
         style={{ width: 320 }}
       >
         <h2 style={{ fontSize: 34, display: "flex", alignItems: "center" }}>
@@ -367,7 +367,7 @@ const AddNewGoalPage = () => {
                     New KPI <InformationTooltip content="New KPI" />
                   </h1>
                   <div
-                    className="kpi-info-menu flex w-full justify-between px-8"
+                    className="flex justify-between w-full px-8 kpi-info-menu"
                     style={{ gap: 120 }}
                   >
                     <div className="w-1/2">
@@ -391,10 +391,10 @@ const AddNewGoalPage = () => {
                     <InformationTooltip content="Tasks" />
                   </h1>
                   <div
-                    className="task-menu flex w-full justify-between px-8"
+                    className="flex justify-between w-full px-8 task-menu"
                     style={{ gap: 120 }}
                   >
-                    <div className="child-menu w-1/2">
+                    <div className="w-1/2 child-menu">
                       <div>Task name</div>
                       <InputField style={{ border: "none" }} />
                       <div>Type</div>
@@ -409,7 +409,7 @@ const AddNewGoalPage = () => {
                         ADD NEW TASK
                       </Button>
                     </div>
-                    <div className="child-menu w-1/2">
+                    <div className="w-1/2 child-menu">
                       <h2
                         style={{
                           fontSize: 34,

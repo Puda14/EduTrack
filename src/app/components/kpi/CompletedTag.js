@@ -1,9 +1,25 @@
-import { Card, CardBody, Button, Divider } from "@nextui-org/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Image,
+  Button,
+  Progress,
+  Divider,
+} from "@nextui-org/react";
+import {
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownSection,
+  DropdownItem,
+} from "@nextui-org/dropdown";
+
 export default function InProgressTag({ goal }) {
   return (
-    <Card className="mb-3" shadow="none">
+    <Card className="mb-3 grow" shadow="none">
       <CardBody className="flex md:grid md:grid-cols-6">
-        <div className="flex ">
+        <div className="flex">
           {" "}
           <Button style={{ backgroundColor: "#8380fe" }}>
             <div>
@@ -16,19 +32,19 @@ export default function InProgressTag({ goal }) {
                 >
                   <path
                     fill-rule="evenodd"
-                    d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.006 5.404.434c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.434 2.082-5.005Z"
+                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
                     clip-rule="evenodd"
                   />
                 </svg>
               </div>
             </div>
-            <div className="hidden md:block"> In progress</div>
+            <div className="hidden md:block"> Completed</div>
           </Button>
         </div>
         <div className="flex flex-col md:col-span-5">
           <div className="text-xl font-bold">{goal}</div>
           <div className="grid grid-cols-1 md:grid-cols-5 text-slate-400">
-            <div className="flex items-center justify-center flex-1 gap-2">
+            <div className="flex items-center justify-center flex-1 gap-2 ">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -50,7 +66,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="items-center justify-center hidden gap-2 sm:flex">
+            <div className="flex items-center justify-center hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +87,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="items-center justify-center hidden gap-2 sm:flex">
+            <div className="flex items-center justify-center flex-1 hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +108,7 @@ export default function InProgressTag({ goal }) {
               <Divider orientation="vertical" />
             </div>
 
-            <div className="items-center justify-center flex-1 hidden gap-2 sm:flex">
+            <div className="flex items-center justify-center flex-1 hidden gap-2 sm:flex">
               <div>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

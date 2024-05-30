@@ -19,6 +19,7 @@ import { SearchIcon } from "../icons/SearchIcon.js";
 import { NotificationIcon } from "../icons/NotificationIcon.js";
 
 export default function App() {
+  const [noti, setNoti] = React.useState("1");
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   return (
     <div className="flex items-center w-full px-2 py-3 md:px-10 grow">
@@ -30,6 +31,14 @@ export default function App() {
         <NavbarMenu className="w-1/2">
           <NavbarItem>
             <Link href="/">
+              <div class="mb-2  flex flex-col p-5">
+                <div className="pl-3">
+                  <img src="https://d1j8r0kxyu9tj8.cloudfront.net/files/yrCAGEApKRMQ5SIPy6zpeOcMLfhfXvHYfcrAYnOb.png" />
+                </div>
+                <h5 class="block antialiased tracking-normal font-sans text-xl font-semibold leading-snug text-gray-900">
+                  EduTrack
+                </h5>
+              </div>
               <div
                 role="button"
                 tabindex="0"
@@ -222,10 +231,13 @@ export default function App() {
           </NavbarItem>
         </NavbarMenu>
         <div className="flex items-center gap-14 grow">
-          <div className="pl-1">
-            <p className="font-bold ext-2xl ">Dashboard</p>
-            <p className="text-sm">14 March 2024</p>
+          <div>
+            <div className="flex flex-col pl-1">
+              <p className="font-bold ext-2xl ">Edu Track</p>
+              <p className="text-sm">24 May 2024</p>
+            </div>
           </div>
+
           <div className="md:w-[400px]">
             <Input
               placeholder="Type to search..."
@@ -236,10 +248,10 @@ export default function App() {
             />
           </div>
         </div>
-        <div className="flex gap-20">
+        <div className="flex gap-10">
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
-              <Badge content="99+" shape="circle" color="danger">
+              <Badge content="1" shape="circle" color="danger">
                 <Button
                   radius="full"
                   isIconOnly

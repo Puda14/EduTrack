@@ -12,6 +12,7 @@ import {
   ModalBody,
   ModalContent,
   ModalFooter,
+  ModalHeader,
   Pagination,
   Select,
   SelectItem,
@@ -30,6 +31,7 @@ const AddNewGoalPage = () => {
   );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
+  const [cardPopup, setCardPopup] = useState(false);
   const [task, setTask] = useState({});
   const [KPI, setKPI] = useState([]);
 
@@ -39,21 +41,46 @@ const AddNewGoalPage = () => {
     const goalWorkbook = XLSX.read(data);
     const goalSheet = goalWorkbook.Sheets[goalWorkbook.SheetNames[0]];
     const goalJSON = XLSX.utils.sheet_to_json(goalSheet);
+    const KPIFilter = new Set([]);
     const KPIList = [];
     const taskList = {
       required: [],
       optional: [],
     };
-    goalJSON.forEach((i) => KPIList.push(i.KPI));
-    goalJSON.forEach((i) => {
-      i.Type === "Required"
-        ? taskList.required.push(i.Task)
-        : taskList.optional.push(i.Task);
+    goalJSON.forEach((item) => {
+      KPIFilter.add(item.KPI);
+    });
+    KPIFilter.forEach((KPI) => {
+      KPIList.push({ KPI: KPI, task: { required: [], optional: [] } });
+    });
+    goalJSON.forEach((item) => {
+      KPIList.some((i) => {
+        i.KPI === item.KPI
+          ? item.Type === "Required"
+            ? i.task.required.push(item.Task)
+            : i.task.optional.push(item.Task)
+          : "";
+      });
+      item.Type === "Required"
+        ? taskList.required.push({
+            task: item.Task,
+            from: item.From,
+            to: item.To,
+            link: item.Link,
+            description: item.Description,
+          })
+        : taskList.optional.push({
+            task: item.Task,
+            from: item.From,
+            to: item.To,
+            link: item.Link,
+            description: item.Description,
+          });
     });
     setKPI(KPIList);
     setTask(taskList);
-    console.log(KPI);
-    console.log(task);
+    console.log(taskList);
+    console.log(KPIList);
     localStorage.setItem("goalList", JSON.stringify(goalJSON));
   };
   const handleAddToList = (item) => {
@@ -147,23 +174,162 @@ const AddNewGoalPage = () => {
           KPI <InformationTooltip content={"KPI"} />
         </h2>
         {
-          KPI.map((i) => {
-            if (i)
-              return (
-                <Card
-                  style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
-                  className="flex-row"
-                  key={i}
-                >
-                  <div className="flex items-center justify-center h-full">
-                    <ClipboardIcon />
-                  </div>
-                  <CardBody className="bg-white">
-                    <div>{i}</div>
-                    <div>Example task</div>
-                  </CardBody>
-                </Card>
-              );
+          KPI.map((item) => {
+            return (
+              <Card
+                style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
+                className="flex-row"
+                key={item.KPI}
+              >
+                <div className="flex items-center justify-center h-full">
+                  <ClipboardIcon />
+                </div>
+                <CardBody className="bg-white">
+                  <div>{item.KPI}</div>
+                  <div>Example task</div>
+                  <Button onClick={setCardPopup}>Information...</Button>
+                </CardBody>
+                <Modal size="5xl" isOpen={cardPopup}>
+                  <ModalContent>
+                    {() => (
+                      <>
+                        <ModalHeader>Fixing overflow</ModalHeader>
+                        <ModalBody className="modal-body">
+                          <h1
+                            style={{
+                              fontSize: 34,
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            New KPI <InformationTooltip content="New KPI" />
+                          </h1>
+                          <div
+                            className="kpi-info-menu flex w-full justify-between px-8"
+                            style={{ gap: 120 }}
+                          >
+                            <div className="w-1/2">
+                              <div>KPI Title</div>
+                              <InputField style={{ border: "none" }} />
+                            </div>
+                            <div className="w-1/2">
+                              <div>KPI Description</div>
+                              <InputField style={{ border: "none" }} />
+                            </div>
+                          </div>
+                          <hr />
+                          <h1
+                            style={{
+                              fontSize: 34,
+                              display: "flex",
+                              alignItems: "center",
+                            }}
+                          >
+                            Tasks
+                            <InformationTooltip content="Tasks" />
+                          </h1>
+                          <div
+                            className="task-menu flex w-full justify-between px-8"
+                            style={{ gap: 120 }}
+                          >
+                            <div className="child-menu w-1/2">
+                              <div>Task name</div>
+                              <InputField style={{ border: "none" }} />
+                              <div>Type</div>
+                              <SelectInputField />
+                              <div>From</div>
+                              <DateInputField />
+                              <div>To</div>
+                              <DateInputField />
+                              <div>Description</div>
+                              <InputField style={{ border: "none" }} />
+                              <Button
+                                style={{ marginTop: "12px" }}
+                                color="primary"
+                              >
+                                ADD NEW TASK
+                              </Button>
+                            </div>
+                            <div className="child-menu w-1/2">
+                              <h2
+                                style={{
+                                  fontSize: 34,
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
+                                Required Tasks{" "}
+                                <InformationTooltip content="requiring" />
+                              </h2>
+                              {item.task.required.map((i) => {
+                                return (
+                                  <Card
+                                    style={{
+                                      backgroundColor: "#dad0ff",
+                                      margin: "16px 0",
+                                    }}
+                                    className="flex-row"
+                                  >
+                                    <div className="flex items-center justify-center h-full">
+                                      <ClipboardIcon />
+                                    </div>
+                                    <CardBody className="bg-white">
+                                      <h3 style={{ fontSize: 20 }}>{i}</h3>
+                                    </CardBody>
+                                  </Card>
+                                );
+                              })}
+                              <hr />
+                              <h2
+                                style={{
+                                  fontSize: 34,
+                                  display: "flex",
+                                  alignItems: "center",
+                                }}
+                              >
+                                Optional Tasks
+                                <InformationTooltip content="optional" />
+                              </h2>
+                              <Select
+                                label="Select number of tasks"
+                                defaultSelectedKeys={"0"}
+                              >
+                                <SelectItem key="0">0</SelectItem>
+                                <SelectItem>1</SelectItem>
+                                <SelectItem>2</SelectItem>
+                              </Select>
+                              {item.task.optional.map((i) => {
+                                return (
+                                  <Card
+                                    style={{
+                                      backgroundColor: "#dad0ff",
+                                      margin: "16px 0",
+                                    }}
+                                    className="flex-row"
+                                  >
+                                    <div className="flex items-center justify-center h-full">
+                                      <ClipboardIcon />
+                                    </div>
+                                    <CardBody className="bg-white">
+                                      <h3 style={{ fontSize: 20 }}>{i}</h3>
+                                    </CardBody>
+                                  </Card>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button onPress={() => setCardPopup(false)}>
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </>
+                    )}
+                  </ModalContent>
+                </Modal>
+              </Card>
+            );
           })
           /* <Card
             style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
@@ -186,6 +352,7 @@ const AddNewGoalPage = () => {
           ADD NEW KPI
         </Button>
         <Modal size="5xl" isOpen={kpiPopup}>
+          <ModalHeader>Fixing overflow</ModalHeader>
           <ModalContent>
             {() => (
               <>
@@ -266,7 +433,8 @@ const AddNewGoalPage = () => {
                               <ClipboardIcon />
                             </div>
                             <CardBody className="bg-white">
-                              <div>{i}</div>
+                              <h3 style={{ fontSize: 20 }}>{i.task}</h3>
+                              <div>{i.description}</div>
                             </CardBody>
                           </Card>
                         );
@@ -327,7 +495,8 @@ const AddNewGoalPage = () => {
                               <ClipboardIcon />
                             </div>
                             <CardBody className="bg-white">
-                              <div>{i}</div>
+                              <h3 style={{ fontSize: 20 }}>{i.task}</h3>
+                              <div>{i.description}</div>
                             </CardBody>
                           </Card>
                         );

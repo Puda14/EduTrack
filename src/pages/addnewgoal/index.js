@@ -26,13 +26,17 @@ import "./responsive.css";
 const XLSX = require("xlsx");
 
 const AddNewGoalPage = () => {
+  const taskList = {
+    required: [],
+    optional: [],
+  };
   const [list, setList] = useState(
     typeof window !== "undefined" ? localStorage.getItem("goalList") : []
   );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
   const [cardPopup, setCardPopup] = useState(false);
-  const [task, setTask] = useState({});
+  const [task, setTask] = useState(taskList);
   const [KPI, setKPI] = useState([]);
 
   const checkFile = async (e) => {
@@ -43,10 +47,7 @@ const AddNewGoalPage = () => {
     const goalJSON = XLSX.utils.sheet_to_json(goalSheet);
     const KPIFilter = new Set([]);
     const KPIList = [];
-    const taskList = {
-      required: [],
-      optional: [],
-    };
+
     goalJSON.forEach((item) => {
       KPIFilter.add(item.KPI);
     });
@@ -96,10 +97,10 @@ const AddNewGoalPage = () => {
   //
   const mapKPI = () => {};
   return (
-    <div className="flex justify-between flex-container">
+    <div className="flex justify-between px-5 flex-container">
       <div
         className="flex flex-col justify-center goal-menu"
-        style={{ width: 540 }}
+        style={{ width: 500 }}
       >
         <form
           onSubmit={handleAddToList}
@@ -122,10 +123,18 @@ const AddNewGoalPage = () => {
               onChange={checkFile}
               style={{ borderRadius: 12, display: "none" }}
             />
-            <Button color="primary" style={{ margin: "0px 15px" }}>
+            <Button
+              style={{
+                margin: "0px 15px",
+                backgroundColor: "#8380fe",
+                color: "white",
+              }}
+            >
               <label for="excel-input">Import</label>
             </Button>
-            <Button color="primary">Export</Button>
+            <Button color="primary" style={{ backgroundColor: "#8380fe" }}>
+              Export
+            </Button>
           </div>
           <div>Title</div>
 
@@ -160,15 +169,18 @@ const AddNewGoalPage = () => {
         </form>{" "}
         <Button
           onClick={handleAddGoal}
-          style={{ margin: "32px 0" }}
-          color="primary"
+          style={{
+            margin: "32px 0",
+            backgroundColor: "#8380fe",
+            color: "white",
+          }}
         >
           Add Goal
         </Button>
       </div>
       <div
         className="flex flex-col kpi-menu item-center"
-        style={{ width: 320 }}
+        style={{ width: 300 }}
       >
         <h2 style={{ fontSize: 34, display: "flex", alignItems: "center" }}>
           KPI <InformationTooltip content={"KPI"} />
@@ -205,7 +217,7 @@ const AddNewGoalPage = () => {
                             New KPI <InformationTooltip content="New KPI" />
                           </h1>
                           <div
-                            className="kpi-info-menu flex w-full justify-between px-8"
+                            className="flex justify-between w-full px-8 kpi-info-menu"
                             style={{ gap: 120 }}
                           >
                             <div className="w-1/2">
@@ -229,10 +241,10 @@ const AddNewGoalPage = () => {
                             <InformationTooltip content="Tasks" />
                           </h1>
                           <div
-                            className="task-menu flex w-full justify-between px-8"
+                            className="flex justify-between w-full px-8 task-menu"
                             style={{ gap: 120 }}
                           >
-                            <div className="child-menu w-1/2">
+                            <div className="w-1/2 child-menu">
                               <div>Task name</div>
                               <InputField style={{ border: "none" }} />
                               <div>Type</div>
@@ -250,7 +262,7 @@ const AddNewGoalPage = () => {
                                 ADD NEW TASK
                               </Button>
                             </div>
-                            <div className="child-menu w-1/2">
+                            <div className="w-1/2 child-menu">
                               <h2
                                 style={{
                                   fontSize: 34,
@@ -348,6 +360,7 @@ const AddNewGoalPage = () => {
           onClick={() => {
             setKpiPopup(true);
           }}
+          style={{ backgroundColor: "#8380fe", color: "white" }}
         >
           ADD NEW KPI
         </Button>

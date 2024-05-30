@@ -1,4 +1,4 @@
-// pages/_app.tsx
+// pages/_app.js
 import { NextUIProvider } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import Header from "@/app/components/header/Header";
@@ -7,23 +7,31 @@ import "./globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const noLayoutPages = ["/"]; // Các trang không cần layout chung
+
+  const isNoLayoutPage = noLayoutPages.includes(router.pathname);
 
   return (
     <NextUIProvider navigate={router.push} className="flex">
-      <div className="">
-        <SideBar />
-      </div>
-
-      <div className="grow" style={{ backgroundColor: "#f3f4f8" }}>
-        <div style={{ backgroundColor: "#f3f4f8" }}>
-          <Header />
-        </div>
-
+      {isNoLayoutPage ? (
         <Component {...pageProps} />
-      </div>
+      ) : (
+        <div className="flex">
+          <div className="">
+            <SideBar />
+          </div>
+
+          <div className="grow" style={{ backgroundColor: "#f3f4f8" }}>
+            <div style={{ backgroundColor: "#f3f4f8" }}>
+              <Header />
+            </div>
+
+            <Component {...pageProps} />
+          </div>
+        </div>
+      )}
     </NextUIProvider>
   );
 }
 
 export default MyApp;
-// con

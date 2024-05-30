@@ -1,0 +1,14 @@
+@media only screen and (max-width: 768px) {
+    .flex-container {
+      display: block;
+    }
+    .kpi-info-menu {
+      display: block;
+    }
+    .task-menu {
+      display: block;
+    }
+    .child-menu {
+      width: 100%;
+    }
+  }

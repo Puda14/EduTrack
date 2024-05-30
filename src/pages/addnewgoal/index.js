@@ -30,6 +30,7 @@ const AddNewGoalPage = () => {
   );
   const [input, setInput] = useState("");
   const [kpiPopup, setKpiPopup] = useState(false);
+  const [task, setTask] = useState({});
   const [KPI, setKPI] = useState([]);
 
   const checkFile = async (e) => {
@@ -39,8 +40,20 @@ const AddNewGoalPage = () => {
     const goalSheet = goalWorkbook.Sheets[goalWorkbook.SheetNames[0]];
     const goalJSON = XLSX.utils.sheet_to_json(goalSheet);
     const KPIList = [];
+    const taskList = {
+      required: [],
+      optional: [],
+    };
     goalJSON.forEach((i) => KPIList.push(i.KPI));
+    goalJSON.forEach((i) => {
+      i.Type === "Required"
+        ? taskList.required.push(i.Task)
+        : taskList.optional.push(i.Task);
+    });
     setKPI(KPIList);
+    setTask(taskList);
+    console.log(KPI);
+    console.log(task);
     localStorage.setItem("goalList", JSON.stringify(goalJSON));
   };
   const handleAddToList = (item) => {
@@ -240,7 +253,25 @@ const AddNewGoalPage = () => {
                         Required Tasks{" "}
                         <InformationTooltip content="requiring" />
                       </h2>
-                      <Card
+                      {task.required.map((i) => {
+                        return (
+                          <Card
+                            style={{
+                              backgroundColor: "#dad0ff",
+                              margin: "16px 0",
+                            }}
+                            className="flex-row"
+                          >
+                            <div className="flex items-center justify-center h-full">
+                              <ClipboardIcon />
+                            </div>
+                            <CardBody className="bg-white">
+                              <div>{i}</div>
+                            </CardBody>
+                          </Card>
+                        );
+                      })}
+                      {/*    <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
                         className="flex-row"
                       >
@@ -263,7 +294,7 @@ const AddNewGoalPage = () => {
                           <div>Task 1</div>
                           <div>Example task</div>
                         </CardBody>
-                      </Card>
+                      </Card> */}
                       <hr />
                       <h2
                         style={{
@@ -283,8 +314,25 @@ const AddNewGoalPage = () => {
                         <SelectItem>1</SelectItem>
                         <SelectItem>2</SelectItem>
                       </Select>
-
-                      <Card
+                      {task.optional.map((i) => {
+                        return (
+                          <Card
+                            style={{
+                              backgroundColor: "#dad0ff",
+                              margin: "16px 0",
+                            }}
+                            className="flex-row"
+                          >
+                            <div className="flex items-center justify-center h-full">
+                              <ClipboardIcon />
+                            </div>
+                            <CardBody className="bg-white">
+                              <div>{i}</div>
+                            </CardBody>
+                          </Card>
+                        );
+                      })}
+                      {/* <Card
                         style={{ backgroundColor: "#dad0ff", margin: "16px 0" }}
                         className="flex-row"
                       >
@@ -307,7 +355,7 @@ const AddNewGoalPage = () => {
                           <div>Task 1</div>
                           <div>Example task</div>
                         </CardBody>
-                      </Card>
+                      </Card> */}
                     </div>
                   </div>
                 </ModalBody>

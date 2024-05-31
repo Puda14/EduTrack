@@ -2,6 +2,10 @@ import { ClipboardIcon } from "@/app/components/icons/ClipboardIcon";
 import { InputField } from "@/app/components/input/InputField";
 import { DateInputField } from "@/app/components/input/DateInputField";
 import { SelectInputField } from "@/app/components/input/SelectInputField";
+import { ClipboardIcon } from "@/app/components/icons/ClipboardIcon";
+import { InputField } from "@/app/components/input/InputField";
+import { DateInputField } from "@/app/components/input/DateInputField";
+import { SelectInputField } from "@/app/components/input/SelectInputField";
 import KPITabs from "@/app/components/kpi/KPITabs";
 import { Input } from "@nextui-org/input";
 import {
@@ -20,6 +24,10 @@ import {
 } from "@nextui-org/react";
 import { Button, Card } from "@nextui-org/react";
 import { useState } from "react";
+import { InformationTooltip } from "@/app/components/hover/InformationTooltip";
+import "./responsive.css";
+
+const XLSX = require("xlsx");
 import { InformationTooltip } from "@/app/components/hover/InformationTooltip";
 import "./responsive.css";
 
@@ -92,14 +100,20 @@ const AddNewGoalPage = () => {
     console.log(input);
   };
   const handleAddGoal = () => {};
+  const handleInputChange = (e) => {
+    setInput(e.target.value);
+    console.log(input);
+  };
+  const handleAddGoal = () => {};
   // list contains goals
   // list = [ {task = [{name, type, fromDate, toDate, description} ], title, fromDate, toDate, role, hashtag, description} ]
   //
   const mapKPI = () => {};
+  const mapKPI = () => {};
   return (
-    <div className="flex flex-col px-5 w-full md:grid grid-cols-5">
+    <div className="flex flex-col w-full grid-cols-5 px-5 md:grid">
       <div
-        className="flex flex-col justify-center goal-menu col-span-3"
+        className="flex flex-col justify-center col-span-3 goal-menu"
         style={{ width: 500 }}
       >
         <form
@@ -148,9 +162,22 @@ const AddNewGoalPage = () => {
             name="Title"
             style={{ border: "none", margin: "8px 0" }}
           />
+
+          {/* <Input
+            style={{ border: "none" }}
+            placeholder="Please enter here"
+            onChange={handleInputChange}
+            value={input}
+          /> */}
+          <InputField
+            name="Title"
+            style={{ border: "none", margin: "8px 0" }}
+          />
           <div>From</div>
           <DateInputField />
+          <DateInputField />
           <div>To</div>
+          <DateInputField />
           <DateInputField />
           <div>Role</div>
           {/*<Inpu t
@@ -161,7 +188,19 @@ const AddNewGoalPage = () => {
           <InputField name="Role" style={{ border: "none" }} />
           <div>Hashtag</div>
           <InputField style={{ border: "none" }} />
+          {/*<Inpu t
+            style={{ border: "none" }}
+            placeholder="Choose your role"
+            value={input}
+          /> */}
+          <InputField name="Role" style={{ border: "none" }} />
+          <div>Hashtag</div>
+          <InputField style={{ border: "none" }} />
           <div>Description</div>
+          <InputField
+            style={{ border: "none" }}
+            placeholder="Please enter description (/250)"
+          />
           <InputField
             style={{ border: "none" }}
             placeholder="Please enter description (/250)"

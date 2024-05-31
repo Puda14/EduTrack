@@ -198,8 +198,8 @@ const AddNewGoalPage = () => {
                 </div>
                 <CardBody className="bg-white">
                   <div>{item.KPI}</div>
-                  <div>Example task</div>
-                  <Button onClick={setCardPopup}>Information...</Button>
+                  <div></div>
+                  <Button onClick={setCardPopup}>Information</Button>
                 </CardBody>
                 <Modal size="5xl" isOpen={cardPopup}>
                   <ModalContent>

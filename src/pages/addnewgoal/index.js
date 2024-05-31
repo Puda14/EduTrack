@@ -97,9 +97,9 @@ const AddNewGoalPage = () => {
   //
   const mapKPI = () => {};
   return (
-    <div className="flex justify-between px-5 flex-container">
+    <div className="flex flex-col px-5 w-full md:grid grid-cols-5">
       <div
-        className="flex flex-col justify-center goal-menu"
+        className="flex flex-col justify-center goal-menu md:col-span-3"
         style={{ width: 500 }}
       >
         <form
